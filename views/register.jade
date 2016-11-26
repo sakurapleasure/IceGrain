@@ -1,0 +1,41 @@
+extends ./base
+
+block head
+    script.
+        $(function() {
+            $("#message").hide();
+            $("#submit-button").click(function() {
+                var id = $("#InputID").val();
+                var screenName = $("#InputScreenName").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/api/users/create",
+                    data: {
+                        "id": id,
+                        "screen_name": screenName 
+                    },
+                    dataType: "json"
+                }).then(function(res, status, jqXHR) {
+                    
+                    location.href = "../";
+                },function(jqXHR, status, err) {
+                    $("#message").text(errorMessageTranslate(jqXHR.responseJSON.error));
+                    $("#message").show();
+                });            
+            });
+        });
+block content
+    h2= strings.register_page.register
+    .panel.panel-default
+        .panel-body
+            .alert.alert-danger#message あああああああああああああああああああああああああああああああ！！！！！！！！！！！（ﾌﾞﾘﾌﾞﾘﾌﾞﾘﾌﾞﾘｭﾘｭﾘｭﾘｭﾘｭﾘｭ！！！！！！ﾌﾞﾂﾁﾁﾌﾞﾌﾞﾌﾞﾁﾁﾁﾁﾌﾞﾘﾘｲﾘﾌﾞﾌﾞﾌﾞﾌﾞｩｩｩｩｯｯｯ！！！！！！！ ）
+            .form-group
+                label(for="InputID") ID
+                input.form-control#InputID
+                small.form-text.text-muted#IDHelp= strings.register_page.id_desc
+            .form-group
+                label(for="InputScreenName") Screen Name
+                input.form-control#InputScreenName
+                small.form-text.text-muted#ScreenNameHelp= strings.register_page.screenName_desc
+            .form-group
+                button.btn.btn-default#submit-button= strings.register_page.submit

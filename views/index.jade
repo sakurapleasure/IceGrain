@@ -1,0 +1,11 @@
+extends ./base
+
+block content
+    h1
+        span.label.label-success 200
+    .panel.panel-default
+        .panel-body
+            | #{strings.index_page.welcome_message}
+    ul.list-inline
+        li
+            a(href="/register") register
