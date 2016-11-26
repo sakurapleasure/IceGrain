@@ -1,4 +1,5 @@
 ### IceGrain
+[![][travis-badge]][travis-link]
 
 A light-weight SNS.
 
@@ -18,3 +19,6 @@ Make sure that you have installed **npm** and **mongodb**.
 
 #### How to launch
 `node index.js`
+
+[travis-link]: https://travis-ci.org/sakurapleasure/IceGrain
+[travis-badge]: https://travis-ci.org/sakurapleasure/IceGrain.svg?branch=master
